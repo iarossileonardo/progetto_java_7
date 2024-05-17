@@ -15,11 +15,12 @@ public class Produttore extends Thread{
     public void run() {
         while (running) {
             try {
+                this.sleep(1000);
                 m.getsProd().acquire();
                 int q = m.vendi(this);
                 System.out.println(nome + " vende " + q + " quintali---M: " + m.getM() + "---C: " + m.getC());
-                this.sleep(1000);
                 //m.getsGros().release(2);
+                m.getsGros().release();
                 m.getsProd().release();
             } catch (InterruptedException e) {
                 e.getStackTrace();

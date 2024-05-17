@@ -15,10 +15,11 @@ public class Grossista extends Thread{
     public void run() {
         while (running) {
             try {
+                this.sleep(1000);
                 m.getsGros().acquire();
                 int q = m.compra(this);
                 System.out.println(nome + " compra " + q + "quintali---M: " + m.getM() + "---C: " + m.getC());
-                this.sleep(1000);
+                m.getsProd().release();
                 m.getsGros().release();
             } catch (InterruptedException e) {
                 e.getStackTrace();

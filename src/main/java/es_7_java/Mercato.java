@@ -14,9 +14,9 @@ public class Mercato {
     public Mercato(int m) {
         this.m = m;
         c = 50;
-        sProd = new Semaphore(5);
-        sGros = new Semaphore(10);
-        sGros.drainPermits();
+        sProd = new Semaphore(1);
+        sGros = new Semaphore(0);
+        //sGros.drainPermits();
     }
 
     public int compra(Grossista g){
